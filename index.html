@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+  
+
+
+
+
+
+</head>
+<body>
+    <p id="demo"></p>
+
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 1px solid #000000; width: 100px; height: 60px; padding: 30px; margin-left: 100px;">
+</div>
+
+
+
+<div id="div2" ondrop="drop(event)" style="border: 1px solid #000000; width: 100px; height: 60px; padding: 30px; margin-left: 300px;">
+    <img id="image"  draggable="true" ondragstart="drag(event)" src="file:///C:/projects/practice/assets/picture/logo.svg" >
+</div>
+
+
+<div id='thirdnodeid' style="display: none;"> <label>Name:</label><input type="text"></div>
+
+</body>
+
+
+
+<!-- <script src="simplejsonserialize.js"></script> -->
+
+
+
+
+
+
+/////////////////////////////////////////////////
+
+<style>
+    div {
+      margin: 0em;
+      padding: 2em;
+    }
+    #src_copy, #src_move  {
+      color: blue;
+      border: 5px solid black;
+      width: 300px;
+      height: 50;
+    }
+    #dest_copy, #dest_move {
+      border: 5px solid blue;
+      width: 300px;
+      height: 50;
+    }
+  </style>
+
+
+  <script>
+
+  function dragover_handler(ev) {
+   console.log("dragOver");
+   ev.preventDefault();
+  }
+
+
+  function dragstart_handler(ev) {
+   // Add the id of the drag source element to the drag data payload so
+   // it is available when the drop event is fired
+   ev.dataTransfer.setData("text1", ev.target.id);
+   // Tell the browser both copy and move are possible
+   ev.effectAllowed = "copyMove";
+  }
+
+
+
+  function drop_handler(ev) {
+    ev.preventDefault();
+    // Get the id of drag source element (that was added to the drag data
+    // payload by the dragstart event handler)
+
+    
+    // var id = ev.dataTransfer.getData("text1");
+    // // Copy the element
+    //  var nodeCopy = document.getElementById(id).cloneNode(true);
+    //  nodeCopy.id = "newId2";
+    //  ev.target.appendChild(nodeCopy);
+
+
+      /////Third symble element will be create////
+     var thirdnode = document.getElementById("thirdnodeid");
+     thirdnode.style.display= 'block';
+     ev.target.appendChild(thirdnode);
+  
+     }
+
+
+    </script>
+
+
+
+<script>
+    function allowDrop(event){
+        event.preventDefault();
+    }
+
+
+    function drag(event){
+        event.dataTransfer.setData("text", event.target.id);
+        event.effectAllowed = "copyMove";
+       }
+
+
+
+    function drop(event){
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        
+
+
+    /////////////
+     var nodeCopy = document.getElementById(data).cloneNode(true);
+   nodeCopy.id = "newId";
+   event.target.appendChild(nodeCopy);
+
+    }
+
+    </script>
+
+
+
+
+
+  </head>
+
+  
+
+
+   <div id="dest_copy" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"><strong>Copy Drop Zone</strong></div>
+
+   <div draggable="true" id="src_copy" ondragstart="dragstart_handler(event);">
+    ****************************
+</div>
+
+
+
+
+   <body>
+</html>

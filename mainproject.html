@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Builder</title>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            event.target.appendChild(document.getElementById(data));
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+    <div>
+        <div>
+            <h3>Form Builder</h3>
+        </div>
+        <div id="divleft" style="border: 1px solid black; width: 70%; display: inline-block;">container for left sight
+            <button onclick="funcClick()">+ click me!</button>
+        </div>
+        <div  id="divright" style="border: 1px solid black; width: 20%; display: inline-block; height: 700px;">
+           
+           
+           
+           
+            <p>container for right sight</p>
+
+            <div id="div2" draggable="true" ondragstart="drag(event)" style="margin-bottom: 8px;">
+                <div style="display: inline-block;">
+                    <ion-icon name="text-outline"></ion-icon>
+                </div>
+                <divstyle="display: inline-block;>Text Field
+            </div>
+
+            <div style="margin-bottom: 8px;">
+                <div style="display: inline-block;">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                </div>
+                <divstyle="display: inline-block;>Description
+            </div>
+
+
+
+            <div style="margin-bottom: 8px;">
+                <div style="display: inline-block;">
+                    <ion-icon name="list-outline"></ion-icon>
+                </div>
+                <divstyle="display: inline-block;>DropDown
+            </div>
+
+        </div><br>
+
+    </div>
+
+
+
+
+
+    </div>
+
+
+</body>
+<script src="mainproject.js"></script>
+
+</html>
